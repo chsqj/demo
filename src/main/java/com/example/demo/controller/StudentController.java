@@ -17,8 +17,7 @@ public class StudentController {
 
     @ResponseBody
     @GetMapping("/students")
-    public Set<Student> getStudents(){
-        studentService.init();
+    public List<Student> getStudents(){
         return studentService.getStudents();
     }
 
@@ -37,14 +36,13 @@ public class StudentController {
     @ResponseBody
     @PutMapping("/student")
     public String updateStudent(Student student){
-        System.out.println(student);
         return studentService.updateStudent(student);
     }
 
     @ResponseBody
     @GetMapping("/classId")
     public List<Integer> getClassId(){
-        return  studentService.getClassId();
+        return studentService.getClassId();
     }
 
     @ResponseBody

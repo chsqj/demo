@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.dao.UserDao;
 import com.example.demo.javaBean.UserBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -9,17 +11,12 @@ import java.util.Set;
 @Service
 public class UserService {
 
-    private Set<UserBean> users = new HashSet<>();
-
-    public void initData() {
-        users.add(new UserBean(1,"root", "root"));
-        users.add(new UserBean(2, "admin", "admin"));
-    }
+    @Autowired
+    UserDao userDao;
 
     public boolean checkUser(UserBean userBean) {
-        for(UserBean user : users) {
-            if(user.equals(userBean)) return true;
-        }
-        return false;
+        UserBean user = userDao.findUser(userBean.getUserName());
+        if(user == null) return false;
+        return user.getPassword().equals(userBean.getPassword());
     }
 }

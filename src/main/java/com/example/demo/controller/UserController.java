@@ -15,7 +15,6 @@ public class UserController {
 
     @RequestMapping("/checkUser")
     public String login(UserBean user, ModelMap map) {
-        userService.initData();
         if(userService.checkUser(user)) {
             return "manager";
         }else {

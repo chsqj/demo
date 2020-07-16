@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.StudentDao">
+    <select id="getStudents" resultType="com.example.demo.javaBean.Student">
+    select * from student;
+    </select>
+
+    <delete id="deleteStudent">
+    delete from student where id = #{id};
+    </delete>
+
+    <select id="getStudent" resultType="com.example.demo.javaBean.Student">
+    select * from student where id = #{id};
+    </select>
+
+    <select id="getClassId" resultType="Integer">
+    select class_id from student GROUP BY class_id;
+    </select>
+
+    <update id="updateStudent" parameterType="com.example.demo.javaBean.Student">
+    update student set num = #{num}, name = #{name}, gender = #{gender}, class_id = #{class_id}, score = #{score} where id = #{id};
+    </update>
+
+    <insert id="addStudent" parameterType="com.example.demo.javaBean.Student" keyProperty="id" useGeneratedKeys="true">
+    insert into student(num, name, gender, class_id, score) values (#{num}, #{name}, #{gender}, #{class_id}, #{score});
+    </insert>
+</mapper>

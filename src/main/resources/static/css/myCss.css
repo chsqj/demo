@@ -1,0 +1,31 @@
+.left_list{
+  width: 19%;
+  height: 100%;
+  float: left;
+  border: 1px;
+}
+.right_content{
+    width: 79%;
+    height: 100%;
+    float: left;
+    border: 1px;
+}
+.left_tab{
+    margin: 10%;
+    border: darkgray;
+}
+.tab_active{
+    color: cornflowerblue;
+}
+.table_css{
+    text-align: center;
+}
+.update_css{
+    color: aqua;
+}
+.delete_css{
+    color: firebrick;
+}
+.select_css{
+    width: 100px;
+}
